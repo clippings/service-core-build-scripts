@@ -1,0 +1,17 @@
+apply plugin: 'com.google.cloud.tools.jib'
+
+
+jib {
+    from { image = "amazoncorretto:17" }
+    container {
+        environment(
+                SPRING_PROFILES_ACTIVE: "default",
+                DT_DB_SCHEMA: "public",
+                DT_DB_URL: "jdbc:postgresql://localhost:5432/postgres?currentSchema=\${DT_DB_SCHEMA}",
+                DT_DB_USERNAME: "postgres",
+                DT_DB_PASSWORD: "postgres"
+        )
+        creationTime = Instant.now().toString()
+        format = com.google.cloud.tools.jib.api.buildplan.ImageFormat.Docker
+    }
+}
