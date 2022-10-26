@@ -1,0 +1,38 @@
+apply plugin: 'ru.vyarus.quality'
+apply plugin: 'de.aaschmid.cpd'
+
+final FIND_SEC_BUGS_VERSION = '1.12.0'
+final SPOTBUGS_VERSION = '4.7.1'
+final PMD_VERSION = '6.50.0'
+
+final LINT_EXCLUDES = project.ext.has('lint_excludes')
+        ? project.ext['lint_excludes']
+        : ['com/dt/**/dto/*', 'com/dt/**/api/*'] // usually auto-generated
+
+quality {
+    enabled = !project.hasProperty('skipLint')
+
+    pmdVersion = PMD_VERSION
+    spotbugsVersion = SPOTBUGS_VERSION
+
+    strict = true
+    checkstyle = false // if it is enabled, maybe spotless is not needed
+    codenarc = false
+    spotbugs = true
+    pmd = true
+    cpd = true
+
+    consoleReporting = true
+    htmlReports = true
+
+    exclude = LINT_EXCLUDES
+
+    spotbugsPlugin("com.h3xstream.findsecbugs:findsecbugs-plugin:$FIND_SEC_BUGS_VERSION")
+}
+
+dependencies {
+    compileOnly "com.github.spotbugs:spotbugs-annotations:$SPOTBUGS_VERSION"
+}
+
+cpdCheck { dependsOn tasks.compileJava }
+
