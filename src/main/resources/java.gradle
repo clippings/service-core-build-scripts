@@ -10,6 +10,14 @@ tasks.withType(JavaCompile) {
 }
 
 repositories {
+    maven {
+        name = 'github'
+        url = uri('https://maven.pkg.github.com/clippings/service-core-starter')
+        credentials {
+            username = project.findProperty("gpr.user") ?: System.getenv('GITHUB_ACTOR')
+            password = project.findProperty("gpr.key") ?: System.getenv('GITHUB_TOKEN')
+        }
+    }
     mavenCentral()
 }
 
