@@ -25,10 +25,6 @@ spotless {
     groovyGradle {
         target '*.gradle'
         greclipse('4.6.3') // a little bit old, but no warnings
-
-        clearSteps()
-        trimTrailingWhitespace()
-        endWithNewline()
     }
 
     json {
