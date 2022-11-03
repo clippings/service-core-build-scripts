@@ -6,6 +6,7 @@ dependencies {
 
 if (project.hasProperty('serverOpenApiFile')) {
     final OPENAPI_FILE = project.ext['serverOpenApiFile'];
+    final PACKAGE_NAME = project.ext['serverOpenApiPackage'] ?: "com.dt.${project.name.replace('-', '.')}"
     final API_ROOT = "${buildDir}/generated/api"
 
     // generate APIs (interfaces and models only) using the provided openapi.yaml
@@ -14,10 +15,10 @@ if (project.hasProperty('serverOpenApiFile')) {
         skipValidateSpec = false
         inputSpec = OPENAPI_FILE
         outputDir = API_ROOT
-        apiPackage = "com.dt.${project.name}.api"
-        modelPackage = "com.dt.${project.name}.dto"
+        apiPackage = "${PACKAGE_NAME}.api"
+        modelPackage = "${PACKAGE_NAME}.dto"
         configOptions = [
-                basePackage                : "com.dt.${project.name}",
+                basePackage                : "${PACKAGE_NAME}",
                 interfaceOnly              : "true",
                 skipDefaultInterface       : "true",
                 // hateoas: "true",
