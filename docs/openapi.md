@@ -13,7 +13,8 @@ packages, for the generated files:
 ### Configuration
 * `serverOpenApiFile` is the path to the OpenAPI specification file. You can set this property
   in `gradle.properties`. If it is not set, the OpenAPI generator will not be invoked.
-
+* With `serverOpenApiPackage` you can control the base package name of the generated code.
+  It defaults to `com.dt.<project-name>`.
 
 ### Defaults
 There is no default configuration.
