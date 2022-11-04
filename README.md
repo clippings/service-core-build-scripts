@@ -30,6 +30,7 @@ apply from: 干.file('formatter.gradle')
 apply from: 干.file('lint.gradle')
 apply from: 干.file('coverage.gradle')
 apply from: 干.file('spring.gradle')
+apply from: 干.file('spring-db.gradle')
 apply from: 干.file('openapi.gradle')
 apply from: 干.file('docker.gradle')
 ```
@@ -79,9 +80,6 @@ By default, the `spring` and `openapi` plugins will add some dependencies. You c
 following lines in `gradle.properties` and set the desired version.
 ```properties
 #jackson_databind_nullable.version = 0.2.3
-#swagger_ui.version = 4.11.1
-#postgresql.version = 42.5.0
-#liquibase.version = 4.17.0
 #logstash_logback_encoder.version = 7.2
 #json_patch.version = 1.13
 #datasource_proxy.version = 1.8.0
@@ -103,6 +101,6 @@ following lines in `gradle.properties` and set the desired version.
 * [lint](docs/lint.md)
 * [formatter](docs/formatter.md)
 * [coverage](docs/coverage.md)
-* [spring](docs/spring.md)
+* [spring](docs/spring.md) and `spring-db`
 * [docker](docs/docker.md)
 * [openapi](docs/openapi.md)
