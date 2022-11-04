@@ -13,13 +13,15 @@ spotless {
         endWithNewline()
         formatAnnotations()
 
-        licenseHeader """\
+        if (!project.hasProperty('skipLicenseHeader')) {
+            licenseHeader """\
 /*
  * Copyright (C) ${new Date().getYear() + 1900} Design Technologies - All Rights Reserved
  * Unauthorized copying of this file via any medium is strictly prohibited.
  * Proprietary and confidential.
  * Please send any inquiries to our Support Team <support@designtechnologies.com>
  */"""
+        }
     }
 
     groovyGradle {

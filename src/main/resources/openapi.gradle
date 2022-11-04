@@ -1,12 +1,12 @@
 apply plugin: 'org.openapi.generator'
 
 dependencies {
-    implementation "org.openapitools:jackson-databind-nullable:${ext.properties['jackson_databind_nullable.version'] ?: '0.2.3'}"
+    implementation "org.openapitools:jackson-databind-nullable:${findProperty('jackson_databind_nullable.version') ?: '0.2.3'}"
 }
 
 if (project.hasProperty('serverOpenApiFile')) {
-    final OPENAPI_FILE = project.ext['serverOpenApiFile'];
-    final PACKAGE_NAME = project.ext['serverOpenApiPackage'] ?: "com.dt.${project.name.replace('-', '.')}"
+    final OPENAPI_FILE = getProperty('serverOpenApiFile');
+    final PACKAGE_NAME = findProperty('serverOpenApiPackage') ?: "com.dt.${project.name.replace('-', '.')}"
     final API_ROOT = "${buildDir}/generated/api"
 
     // generate APIs (interfaces and models only) using the provided openapi.yaml

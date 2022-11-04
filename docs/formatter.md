@@ -16,3 +16,7 @@ reformat the code according the following rules:
     * trimTrailingWhitespace
     * endWithNewline
 
+
+### Configuration
+By default, the plugin will add/update the license header of your Java files. If you want to skip
+that, you can set the `skipLicenseHeader` property `true` in your `gradle.properties` file.

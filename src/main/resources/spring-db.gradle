@@ -1,0 +1,10 @@
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    // DB driver and the migration tool (versions are managed by spring boot bom)
+    implementation "org.postgresql:postgresql" // postgresql.version
+    implementation "org.liquibase:liquibase-core" // liquibase.version
+    // testing
+    testImplementation "org.testcontainers:postgresql" // managed by testcontainers bom
+    // for verbose logging of SQL queries, that includes passed parameters
+    implementation "com.github.gavlyukovskiy:datasource-proxy-spring-boot-starter:${findProperty('datasource_proxy.version') ?: '1.8.0'}"
+}
