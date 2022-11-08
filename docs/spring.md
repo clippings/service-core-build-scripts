@@ -28,6 +28,7 @@ For testing we add:
 * `spring-boot-starter-test` - that adds capabilities to create Spring unit and integration tests,
   based on [jUnit 5 (Jupiter)](https://junit.org/junit5/docs/current/user-guide/) platform.
 * `testcontainers` - version management bom
+* `spring-cloud` - version management bom
 
 The second plugin named `spring-db` adds dependencies, to enable your application to use
 databases, in particular PostgreSQL:
@@ -75,3 +76,4 @@ We are defining the following version properties:
 | json_patch.version               | 1.13          |
 | datasource_proxy.version         | 1.8.0         |
 | testcontainers.version           | 1.17.3        |
+| spring-cloud.version             | 2021.0.4      |

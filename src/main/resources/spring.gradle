@@ -21,6 +21,13 @@ dependencies {
     testImplementation "org.testcontainers:junit-jupiter"
 }
 
+// spring cloud bom
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${findProperty('spring-cloud.version') ?: '2021.0.4'}"
+    }
+}
+
 // by default start with dev profile, that enables local DB and text-based logging
 bootRun {
     args = ['--spring.profiles.active=dev']
