@@ -1,7 +1,7 @@
 apply plugin: 'com.google.cloud.tools.jib'
 
 
-ext.projectName = "${project.name}".toLowerCase()
+ext.projectName = project.name.toLowerCase()
 
 ext.getDockerImage = { ->
     def registry = System.env.DOCKER_REGISTRY ?: ""
@@ -22,7 +22,7 @@ jib {
                 DT_DB_URL: "jdbc:postgresql://localhost:5432/postgres?currentSchema=\${DT_DB_SCHEMA}",
                 DT_DB_USERNAME: "postgres",
                 DT_DB_PASSWORD: "postgres",
-                SPRING_APPLCIATION_NAME: "${projectName}".toString()
+                SPRING_APPLICATION_NAME:  project.name.toLowerCase()
         )
         creationTime = Instant.now().toString()
         format = com.google.cloud.tools.jib.api.buildplan.ImageFormat.Docker
