@@ -18,6 +18,8 @@ Enables Spring Boot plugin and adds the following core spring dependencies to th
     * https://www.baeldung.com/spring-boot-actuators
 
 Some additional dependencies:
+* `spring-cloud-sleuth-otel-dependencies` - to include spring cloud sleuth otel dependencies
+* `opentelemetry-exporter-otlp` - to include open telementry exporter to send trace data .
 * `micrometer-registry-prometheus` - to enable prometheus-ready metcis
 * `logstash-logback-encoder` - the log formatter, that we use to enable JSON logging
 * `json-patch` - an RFC 6902 (JSON Patch) and reverse, plus RFC 7386 (JSON Merge Patch),
@@ -74,6 +76,7 @@ We are defining the following version properties:
 |----------------------------------|---------------|
 | logstash_logback_encoder.version | 7.2           |
 | json_patch.version               | 1.13          |
-| datasource_proxy.version         | 1.8.0         |
+| datasource-proxy.version         | 1.8.0         |
 | testcontainers.version           | 1.17.3        |
 | spring-cloud.version             | 2021.0.4      |
+| spring-cloud-sleuth-otel.version | 1.1.0         |

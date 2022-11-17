@@ -7,10 +7,20 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    //===start===
+    //  Spring Cloud Sleuth for distributed tracing with Open Telemetry support
+    implementation('org.springframework.cloud:spring-cloud-starter-sleuth') {
+        exclude group: 'org.springframework.cloud', module: 'spring-cloud-sleuth-brave'
+    } //  We want to exclude the default tracer coming from Sleuth...
+    // ... and we want to include the one coming from Spring Cloud Sleuth OTel
+    implementation 'org.springframework.cloud:spring-cloud-sleuth-otel-autoconfigure'
+    // finally - adding opentelemntry exporter
+    implementation 'io.opentelemetry:opentelemetry-exporter-otlp'
+    //===end===
     // prometheus metrics
     implementation("io.micrometer:micrometer-registry-prometheus")
     // json-formatted log file
-    implementation "net.logstash.logback:logstash-logback-encoder:${findProperty('logstash_logback_encoder.version') ?: '7.2'}"
+    implementation "net.logstash.logback:logstash-logback-encoder:${findProperty('logstash-logback-encoder.version') ?: '7.2'}"
     // support for json-patch is optional
     implementation "com.github.java-json-tools:json-patch:${findProperty('json_patch.version') ?: '1.13'}"
     // dev
@@ -25,6 +35,8 @@ dependencies {
 dependencyManagement {
     imports {
         mavenBom "org.springframework.cloud:spring-cloud-dependencies:${findProperty('spring-cloud.version') ?: '2021.0.4'}"
+        mavenBom "org.springframework.cloud:spring-cloud-sleuth-otel-dependencies:${findProperty('spring-cloud-sleuth-otel.version') ?: '1.1.0'}"
+
     }
 }
 

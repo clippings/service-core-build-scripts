@@ -6,5 +6,5 @@ dependencies {
     // testing
     testImplementation "org.testcontainers:postgresql" // managed by testcontainers bom
     // for verbose logging of SQL queries, that includes passed parameters
-    implementation "com.github.gavlyukovskiy:datasource-proxy-spring-boot-starter:${findProperty('datasource_proxy.version') ?: '1.8.0'}"
+    implementation "com.github.gavlyukovskiy:datasource-proxy-spring-boot-starter:${findProperty('datasource-proxy.version') ?: '1.8.0'}"
 }
