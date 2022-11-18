@@ -1,6 +1,8 @@
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
+final MAPSTRUCT_VERSION = findProperty('map-struct.version') ?: '1.5.3.Final'
+
 dependencies {
     // spring dependencies, use the starters - they guarantee compatibility
     implementation 'org.springframework.boot:spring-boot-starter'
@@ -23,7 +25,10 @@ dependencies {
     // json-formatted log file
     implementation "net.logstash.logback:logstash-logback-encoder:${findProperty('logstash-logback-encoder.version') ?: '7.2'}"
     // support for json-patch is optional
-    implementation "com.github.java-json-tools:json-patch:${findProperty('json_patch.version') ?: '1.13'}"
+    implementation "com.github.java-json-tools:json-patch:${findProperty('json-patch.version') ?: '1.13'}"
+    // support object mapping with map-struct
+    implementation "org.mapstruct:mapstruct:${MAPSTRUCT_VERSION}"
+    annotationProcessor "org.mapstruct:mapstruct-processor:${MAPSTRUCT_VERSION}"
     // dev
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     // testing
