@@ -1,15 +1,26 @@
 apply plugin: 'com.google.cloud.tools.jib'
 
 
+ext.getDockerImage = { ->
+    def registry = System.env.DOCKER_REGISTRY ?: ""
+    def version = System.env.DOCKER_IMAGE_VERSION ?: "latest"
+    if (registry != "" && !registry.endsWith("/")) {
+        registry = registry + "/";
+    }
+    return "${registry}${project.name.toLowerCase()}:${version}"
+}
+
 jib {
     from { image = "amazoncorretto:17" }
+    to { image = getDockerImage() }
     container {
         environment(
                 SPRING_PROFILES_ACTIVE: "default",
                 DT_DB_SCHEMA: "public",
                 DT_DB_URL: "jdbc:postgresql://localhost:5432/postgres?currentSchema=\${DT_DB_SCHEMA}",
                 DT_DB_USERNAME: "postgres",
-                DT_DB_PASSWORD: "postgres"
+                DT_DB_PASSWORD: "postgres",
+                SPRING_APPLICATION_NAME:  project.name.toLowerCase()
         )
         creationTime = Instant.now().toString()
         format = com.google.cloud.tools.jib.api.buildplan.ImageFormat.Docker
