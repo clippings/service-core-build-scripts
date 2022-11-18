@@ -1,15 +1,13 @@
 apply plugin: 'com.google.cloud.tools.jib'
 
 
-ext.projectName = project.name.toLowerCase()
-
 ext.getDockerImage = { ->
     def registry = System.env.DOCKER_REGISTRY ?: ""
     def version = System.env.DOCKER_IMAGE_VERSION ?: "latest"
     if (registry != "" && !registry.endsWith("/")) {
         registry = registry + "/";
     }
-    return "${registry}${projectName}:${version}"
+    return "${registry}${project.name.toLowerCase()}:${version}"
 }
 
 jib {
