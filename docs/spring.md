@@ -74,9 +74,10 @@ We are defining the following version properties:
 
 | Property                         | Default Value |
 |----------------------------------|---------------|
-| logstash_logback_encoder.version | 7.2           |
-| json_patch.version               | 1.13          |
+| logstash-logback-encoder.version | 7.2           |
+| json-patch.version               | 1.13          |
 | datasource-proxy.version         | 1.8.0         |
 | testcontainers.version           | 1.17.3        |
 | spring-cloud.version             | 2021.0.4      |
 | spring-cloud-sleuth-otel.version | 1.1.0         |
+| map-struct.version               | 1.5.3.Final   |
