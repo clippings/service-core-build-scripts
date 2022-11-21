@@ -17,11 +17,13 @@ Enables Spring Boot plugin and adds the following core spring dependencies to th
     * https://spring.io/guides/gs/actuator-service/
     * https://www.baeldung.com/spring-boot-actuators
 
+Open Telemetry (Monitoring) Dependencies:
+* `spring-cloud-sleuth-otel-dependencies` - to include spring cloud sleuth OTEL dependencies
+* `opentelemetry-exporter-otlp` - to include open telemetry exporter to send trace data .
+* `micrometer-registry-prometheus` - to enable prometheus-ready metrics
+
 Some additional dependencies:
-* `spring-cloud-sleuth-otel-dependencies` - to include spring cloud sleuth otel dependencies
-* `opentelemetry-exporter-otlp` - to include open telementry exporter to send trace data .
-* `micrometer-registry-prometheus` - to enable prometheus-ready metcis
-* `logstash-logback-encoder` - the log formatter, that we use to enable JSON logging
+* `logstash-logback-encoder` - the log formatter, that we use to enable [JSON logging](https://github.com/logfellow/logstash-logback-encoder)
 * `json-patch` - an RFC 6902 (JSON Patch) and reverse, plus RFC 7386 (JSON Merge Patch),
   implementation in Java
 * [spring-boot-devtools](https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.devtools)
@@ -37,7 +39,8 @@ databases, in particular PostgreSQL:
 * `spring-boot-starter-data-jpa` - DB access, using JPA/Hibernate
 * `postgresql` - database driver & test container
 * `liquibase` - the tool we use for automatic DB migrations
-* `datasource-proxy-spring-boot-starter` - to properly format the SQL queries, when debug is enabled.
+* `datasource-proxy-spring-boot-starter` - to properly
+  [format the SQL queries](https://vladmihalcea.com/log-sql-spring-boot/), when debug is enabled.
 
 You shouldn't use the `spring-db` plugin alone. Import the `spring` plugin first.
 
@@ -81,3 +84,27 @@ We are defining the following version properties:
 | spring-cloud.version             | 2021.0.4      |
 | spring-cloud-sleuth-otel.version | 1.1.0         |
 | map-struct.version               | 1.5.3.Final   |
+
+
+### References
+* MapStruct
+  * https://www.baeldung.com/mapstruct
+  * https://medium.com/uphill-engineering-design/deep-dive-into-mapstruct-spring-7ddd8dac3d6d
+  * https://github.com/mapstruct/mapstruct-examples
+* JsonPatch
+  * https://jsonpatch.com
+  * https://www.baeldung.com/spring-rest-json-patch
+  * https://cassiomolin.com/2019/06/10/using-http-patch-in-spring/
+  * https://github.com/omlip/json-patch-example
+  * https://bijukunjummen.medium.com/json-patch-and-json-merge-patch-quick-example-in-java-c36fdabc2810
+  * https://docs.spring.io/spring-data/rest/docs/current/api/org/springframework/data/rest/webmvc/json/patch/package-summary.html
+* Spring Cloud Sleuth
+  * https://spring.io/projects/spring-cloud-sleuth
+  * https://www.baeldung.com/spring-cloud-sleuth-single-application
+  * https://opentelemetry.io
+* TestContainers
+  * https://www.testcontainers.org
+  * https://www.baeldung.com/spring-boot-testcontainers-integration-test
+  * https://www.baeldung.com/docker-test-containers
+  * https://www.baeldung.com/spring-boot-redis-testcontainers
+  * https://www.baeldung.com/spring-dynamicpropertysource
