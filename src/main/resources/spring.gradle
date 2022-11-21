@@ -56,7 +56,9 @@ bootRun {
 // by default create mappers as spring injectable beans
 compileJava {
     options.compilerArgs += [
-            '-Amapstruct.defaultComponentModel=spring'
+            '-Amapstruct.defaultComponentModel=spring',
+            '-Amapstruct.suppressGeneratorTimestamp=true',
+            '-Amapstruct.suppressGeneratorVersionInfoComment=true'
     ]
 }
 
