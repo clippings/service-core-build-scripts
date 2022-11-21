@@ -92,6 +92,7 @@ We are defining the following version properties:
   * https://www.baeldung.com/mapstruct
   * https://medium.com/uphill-engineering-design/deep-dive-into-mapstruct-spring-7ddd8dac3d6d
   * https://github.com/mapstruct/mapstruct-examples
+  * https://github.com/all-of-us/workbench/blob/main/api/docs/mapstruct.md
 * JsonPatch
   * https://jsonpatch.com
   * https://www.baeldung.com/spring-rest-json-patch
