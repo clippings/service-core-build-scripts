@@ -53,6 +53,13 @@ bootRun {
     args = ['--spring.profiles.active=dev']
 }
 
+// by default create mappers as spring injectable beans
+compileJava {
+    options.compilerArgs += [
+            '-Amapstruct.defaultComponentModel=spring'
+    ]
+}
+
 // generate META-INF/build-info.properties used by Actuator
 springBoot {
     buildInfo()
