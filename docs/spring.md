@@ -84,6 +84,7 @@ We are defining the following version properties:
 | spring-cloud.version             | 2021.0.4      |
 | spring-cloud-sleuth-otel.version | 1.1.0         |
 | map-struct.version               | 1.5.3.Final   |
+| lombok-mapstruct-binding.version | 0.2.2         |
 
 
 ### References

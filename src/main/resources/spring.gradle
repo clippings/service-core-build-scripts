@@ -29,6 +29,8 @@ dependencies {
     // support object mapping with map-struct
     implementation "org.mapstruct:mapstruct:${MAPSTRUCT_VERSION}"
     annotationProcessor "org.mapstruct:mapstruct-processor:${MAPSTRUCT_VERSION}"
+    annotationProcessor "org.projectlombok:lombok-mapstruct-binding:${findProperty('lombok-mapstruct-binding.version') ?: '0.2.0'}"
+
     // dev
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     // testing
