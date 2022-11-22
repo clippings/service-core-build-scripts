@@ -26,6 +26,10 @@ if (project.hasProperty('serverOpenApiFile')) {
                 prependFormOrBodyParameters: "true",
                 generateSupportingFiles    : "false",
                 legacyDiscriminatorBehavior: "false",
+                // Declare controller operation methods to throw a generic exception(Exception.java)
+                // and allow unhandled exceptions (useful to throw chekced exceptions and handle
+                // them in the generic exception handler)
+                unhandledException: "true",
                 // Whether to use tags for creating interface and controller class names
                 // Will split the API interfaces per tag name
                 useTags                    : "true",
