@@ -5,7 +5,7 @@ dependencies {
 }
 
 if (project.hasProperty('serverOpenApiFile')) {
-    final OPENAPI_FILE = getProperty('serverOpenApiFile');
+    final OPENAPI_FILE = getProperty('serverOpenApiFile')
     final PACKAGE_NAME = findProperty('serverOpenApiPackage') ?: "com.dt.${project.name.replace('-', '.')}"
     final API_ROOT = "${buildDir}/generated/api"
 
@@ -13,7 +13,7 @@ if (project.hasProperty('serverOpenApiFile')) {
     openApiGenerate {
         generatorName = "spring"
         skipValidateSpec = false
-        inputSpec = OPENAPI_FILE
+        inputSpec = projectDir.toString() + '/' + OPENAPI_FILE
         outputDir = API_ROOT
         apiPackage = "${PACKAGE_NAME}.api"
         modelPackage = "${PACKAGE_NAME}.dto"
@@ -22,14 +22,21 @@ if (project.hasProperty('serverOpenApiFile')) {
                 interfaceOnly              : "true",
                 skipDefaultInterface       : "true",
                 // hateoas: "true",
-                performBeanValidation      : "true",
+                // useBeanValidation will use the standard API, performBeanValidation will use
+                // hibernate validator. So it's better to stick only to the standard.
+                // Don't enable bother, otherwise if you use email validation, the generate code
+                // will not compile.
+                useBeanValidation          : "true",
                 prependFormOrBodyParameters: "true",
                 generateSupportingFiles    : "false",
                 legacyDiscriminatorBehavior: "false",
                 // Declare controller operation methods to throw a generic exception(Exception.java)
-                // and allow unhandled exceptions (useful to throw chekced exceptions and handle
+                // and allow unhandled exceptions (useful to throw checked exceptions and handle
                 // them in the generic exception handler)
-                unhandledException: "true",
+                unhandledException         : "true",
+                // Defines whether primitive types defined at the model/schema level will be
+                // wrapped in a model
+                generateAliasAsModel       : "false",
                 // Whether to use tags for creating interface and controller class names
                 // Will split the API interfaces per tag name
                 useTags                    : "true",
