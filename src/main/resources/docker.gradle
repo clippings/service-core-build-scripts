@@ -1,6 +1,5 @@
 apply plugin: 'com.google.cloud.tools.jib'
 
-
 ext.getDockerImage = { ->
     def registry = System.env.DOCKER_REGISTRY ?: ""
     def version = System.env.DOCKER_IMAGE_VERSION ?: "latest"
@@ -11,6 +10,10 @@ ext.getDockerImage = { ->
 }
 
 jib {
+    // use spring boot production runtime classpath in order to not include dev only dependencies
+    // like spring dev tools
+    // more info: https://github.com/GoogleContainerTools/jib/issues/2336#issuecomment-849778769
+    configurationName = "productionRuntimeClasspath"
     from { image = "amazoncorretto:17" }
     to { image = getDockerImage() }
     container {
